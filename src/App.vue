@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
+    <navbar></navbar>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+    <router-view></router-view>
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+    <!-- <page-viewer
+    v-if="pages.length > 0"
+    :page="pages[activePage]"
+    ></page-viewer>
+
+    <create-page
+    @page-created="pageCreated"
+    ></create-page> -->
+  </template>
+  
+  <script>
+  import Navbar from './components/Navbar.vue';
+
+  export default {
+    components: {
+        Navbar,
+    },
+    methods: {
+      pageCreated(pageObj) {
+        this.pages.push(pageObj)
+      }
+    }
   }
-}
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  </script>
+  
